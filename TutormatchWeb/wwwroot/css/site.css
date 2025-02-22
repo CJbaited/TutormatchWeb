@@ -62,14 +62,22 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
+  position: relative;
   width: 100%;
-  white-space: nowrap;
-  line-height: 60px; 
+  background-color: #222;
+  color: #222;
+  z-index: 10;
+  padding: 60px 0 40px 0;
+  margin-top: -48px;
+  line-height: normal;
 }
 
 /* Hero Section */
@@ -116,7 +124,6 @@ body {
 
 .fade-in.active {
     opacity: 1;
-    transform: translateY(0);
 }
 
 /* Features Section Styling */
@@ -206,4 +213,175 @@ body {
     .feature-item {
         justify-content: center;
     }
+}
+
+/* How It Works Section */
+.how-it-works {
+    position: relative;
+    height: 500vh; /* Increased height to ensure last section has full viewport */
+    background-color: #e1e1e1;
+}
+
+.progress-bar {
+  position: fixed;
+  left: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 300px;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.progress-bar.visible {
+  opacity: 1;
+}
+
+.progress-fill {
+    position: absolute;
+    width: 100%;
+    background: #6B73FF;
+    bottom: 0;
+    transition: height 0.2s ease;
+}
+/* 
+.progress-points {
+    position: absolute;
+    left: -4px;
+    width: 10px;
+    height: 100%;
+}
+
+.point {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #6B73FF;
+    transition: all 0.3s ease;
+}
+
+.point.active {
+    background: #6B73FF;
+    transform: scale(1.5);
+} */
+
+.section-container {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+}
+
+.how-it-works-section {
+    position: absolute;
+    width: 100%;
+    height: 124vh;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.how-it-works-section.active {
+    opacity: 1;
+}
+
+.section-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 100px;
+}
+
+.text-content {
+    flex: 0 0 45%;
+}
+
+.image-content {
+    flex: 0 0 45%;
+}
+
+.section-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.section-title.active {
+    opacity: 1;
+}
+
+/* Action Section */
+.action-section {
+    min-height: 100vh;
+    position: relative;
+    background-image: url('../images/action-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 28px; 
+}
+
+.action-content {
+    width: 100%;
+    padding: 4rem 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: white;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.store-button {
+    transition: transform 0.2s ease;
+}
+
+.store-button:hover {
+    transform: translateY(-5px);
+}
+
+.store-button img {
+    height: 50px;
+}
+
+.footer h5 {
+    color: #0b9388;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.footer p {
+    color: #9fa6b2;
+    line-height: 1.6;
+}
+
+.footer ul li {
+    margin-bottom: 12px;
+}
+
+.footer ul li a {
+    color: #9fa6b2;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer ul li a:hover {
+    color: #0b9388;
+    text-decoration: none;
 }
