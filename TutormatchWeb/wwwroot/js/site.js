@@ -7,7 +7,7 @@
         
         if (scrollPosition > heroSection.offsetTop && scrollPosition < heroBottom) {
             const progress = ((scrollPosition - heroSection.offsetTop) / heroSection.offsetHeight) *2;
-            const startColor = { r: 9, g: 98, b: 91 }; // #084843
+            const startColor = { r: 118, g: 168, b: 148 }; // #76a894
             const endColor = { r: 255, g: 255, b: 255 }; // #FFFFFF
             
             const currentColor = {
