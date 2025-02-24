@@ -1,0 +1,77 @@
+@model List<Dispute>
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "_AdminLayout";
+}
+
+<div class="container mt-5 pt-5">
+    <h2>Dispute Management</h2>
+    
+    <ul class="nav nav-tabs mb-3" id="disputeTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#pending" role="tab">Pending</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="in-progress-tab" data-toggle="tab" href="#in-progress" role="tab">In Progress</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="resolved-tab" data-toggle="tab" href="#resolved" role="tab">Resolved</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="cancelled-tab" data-toggle="tab" href="#cancelled" role="tab">Cancelled</a>
+        </li>
+    </ul>
+    
+    <div class="tab-content" id="disputeTabsContent">
+        @foreach (var status in new[] { "pending", "in_progress", "resolved", "cancelled" })
+        {
+            var statusDisputes = Model.Where(d => d.Status == status).OrderByDescending(d => d.CreatedAt);
+            var isActive = status == "pending";
+            
+            <div class="tab-pane fade @(isActive ? "show active" : "")" 
+                 id="@(status.Replace("_", "-"))" 
+                 role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Issue Type</th>
+                                <th>Created By</th>
+                                <th>Created At</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var dispute in statusDisputes)
+                            {
+                                <tr>
+                                    <td>@dispute.Id</td>
+                                    <td>@dispute.IssueType</td>
+                                    <td>@dispute.CreatedByRole</td>
+                                    <td>@dispute.CreatedAt.ToString("g")</td>
+                                    <td>@dispute.Status</td>
+                                    <td>
+                                        <a href="/admin/dispute/@dispute.Id" class="btn btn-primary btn-sm">View</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#disputeTabs a').on('click', function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        });
+    </script>
+}

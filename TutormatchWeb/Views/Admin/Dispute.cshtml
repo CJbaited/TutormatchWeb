@@ -1,0 +1,55 @@
+@model Dispute
+@{
+    ViewData["Title"] = "Dispute Details";
+    Layout = "_AdminLayout";
+}
+
+<div class="container mt-5 pt-5">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3>Dispute #@Model.Id</h3>
+            <select class="form-control w-auto" id="statusSelect" onchange="updateStatus(this.value)">
+                <option value="pending" selected="@(Model.Status == "pending")">Pending</option>
+                <option value="in_progress" selected="@(Model.Status == "in_progress")">In Progress</option>
+                <option value="resolved" selected="@(Model.Status == "resolved")">Resolved</option>
+                <option value="cancelled" selected="@(Model.Status == "cancelled")">Cancelled</option>
+            </select>
+        </div>
+        <div class="card-body">
+            <h5>Issue Type: @Model.IssueType</h5>
+            <p class="text-muted">Created By: @Model.CreatedByRole</p>
+            <p class="text-muted">Created At: @Model.CreatedAt.ToString("g")</p>
+            <hr>
+            <h6>Description:</h6>
+            <p>@Model.Description</p>
+            @if (!string.IsNullOrEmpty(Model.ResolutionNotes))
+            {
+                <h6>Resolution Notes:</h6>
+                <p>@Model.ResolutionNotes</p>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        async function updateStatus(status) {
+            try {
+                const response = await fetch('/admin/dispute/@Model.Id/status', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(status)
+                });
+                
+                if (!response.ok) throw new Error('Failed to update status');
+                window.location.reload();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to update dispute status');
+            }
+        }
+    </script>
+}
+
