@@ -7,7 +7,7 @@
 <div class="container mt-5 pt-5">
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h3>Dispute #@Model.Id</h3>
+            <h3>Dispute #@Model.id</h3>
             <select class="form-control w-auto" id="statusSelect" onchange="updateStatus(this.value)">
                 <option value="pending" selected="@(Model.Status == "pending")">Pending</option>
                 <option value="in_progress" selected="@(Model.Status == "in_progress")">In Progress</option>
@@ -35,7 +35,7 @@
     <script>
         async function updateStatus(status) {
             try {
-                const response = await fetch('/admin/dispute/@Model.Id/status', {
+                const response = await fetch('/admin/dispute/@Model.id/status', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

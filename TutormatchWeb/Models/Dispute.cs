@@ -1,14 +1,15 @@
 using System;
 using Supabase.Postgrest.Models;
-using System.ComponentModel.DataAnnotations.Schema;
+using Supabase.Postgrest.Attributes;
 
 namespace TutormatchWeb.Models
 {
-    [Table("Dispute", Schema = "public")]
+    [Table("Dispute")]  // Use Supabase Table attribute
     public class Dispute : BaseModel
     {
-        [Column("id")]
-        public Guid Id { get; set; }
+        [PrimaryKey]
+        [Column("id")]  // Use Supabase Column attribute
+        public Guid id { get; set; }
 
         [Column("booking_id")]
         public Guid BookingId { get; set; }

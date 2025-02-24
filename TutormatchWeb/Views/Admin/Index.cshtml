@@ -47,13 +47,13 @@
                             @foreach (var dispute in statusDisputes)
                             {
                                 <tr>
-                                    <td>@dispute.Id</td>
+                                    <td>@dispute.id</td>
                                     <td>@dispute.IssueType</td>
                                     <td>@dispute.CreatedByRole</td>
                                     <td>@dispute.CreatedAt.ToString("g")</td>
                                     <td>@dispute.Status</td>
                                     <td>
-                                        <a href="/admin/dispute/@dispute.Id" class="btn btn-primary btn-sm">View</a>
+                                        <a href="/admin/dispute/@dispute.id" class="btn btn-primary btn-sm">View</a>
                                     </td>
                                 </tr>
                             }
