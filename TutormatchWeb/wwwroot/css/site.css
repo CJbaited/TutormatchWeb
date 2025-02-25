@@ -85,48 +85,142 @@ body {
     min-height: 100vh;
     background: linear-gradient(135deg, #296964 0%, #aad6bb 100%);
     color: white;
-    display: flex;
-    align-items: center;
-    margin-bottom: 0;
+    padding: 80px 20px;
     position: relative;
-    overflow: hidden; /* Add this to contain the image */
+    overflow: hidden;
 }
 
 .hero-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    right: 130px;
-    top: 150px;
-    max-width: 60%; /* Takes up half the screen */
+    max-width: 600px;
+    height: auto;
+    position: relative;
+    margin: 2rem auto;
+    display: block;
 }
 
 /* Update container styling */
 .hero-section .container {
     position: relative;
-    z-index: 2; /* Ensure content stays above image */
+    z-index: 2;
+    padding: 0 15px;
 }
 
 .hero-section .row {
-    min-height: 100vh;
+    min-height: calc(100vh - 160px);
+    align-items: center;
 }
 
-/* Responsive adjustments */
-@media (max-width: 992px) {
-    .hero-image {
-        position: relative;
-        max-width: 100%;
-        height: 50vh;
-        margin-top: 2rem;
-    }
-    
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Mobile styles (up to 768px) */
+@media (max-width: 768px) {
     .hero-section {
-        padding: 6rem 0;
+        padding: 60px 15px;
+        text-align: center;
+        min-height: auto;
     }
-    
-    .hero-section .row {
+
+    .hero-image {
+        display: none; /* Hide the image on mobile */
+    }
+
+    .hero-section .container {
+        padding: 2rem 15px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-section .lead {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
         flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        margin: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .col-lg-6 {
+        padding: 0 15px;
+    }
+}
+
+/* Tablet styles (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-section {
+        padding: 80px 40px;
+    }
+
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+
+    .hero-image {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .hero-buttons {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    }
+}
+
+/* Tablet styles (768px - 1024px) */
+@media (min-width: 769px) {
+    .hero-image {
+        display: block; /* Show image on tablet and larger screens */
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        max-width: 45%;
+        margin: 0;
+    }
+
+    .hero-section {
+        min-height: 100vh;
+        padding: 80px 40px;
+    }
+}
+
+/* Desktop styles (above 1024px) */
+@media (min-width: 1025px) {
+    .hero-section {
+        padding: 0;
+    }
+
+    .hero-image {
+        position: absolute;
+        right: 0;
+        top: 70%;
+        transform: translateY(-50%);
+        max-width: 80%;
+        margin: 0;
+    }
+
+    .hero-section .container {
+        padding: 0 50px;
+    }
+
+    .hero-buttons {
+        justify-content: flex-start;
     }
 }
 
@@ -432,7 +526,6 @@ body {
     background: linear-gradient(to top, rgba(173, 167, 167, 0.9), transparent);
     color: white;
     margin-top: auto;
-    margin-bottom: 2rem;
 }
 
 .action-buttons {
@@ -478,4 +571,175 @@ body {
 .footer ul li a:hover {
     color: #0b9388;
     text-decoration: none;
+}
+
+/* General responsive adjustments */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding: 100px 0 50px;
+  }
+
+  .hero-image {
+    position: static;
+    max-width: 100%;
+    margin-top: 2rem;
+    right: auto;
+    top: auto;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    margin: 0 !important;
+  }
+
+  /* Features section */
+  .feature-container {
+    flex-direction: column;
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
+
+  .feature-info {
+    text-align: center;
+  }
+
+  .feature-item {
+    justify-content: center;
+  }
+
+  .feature-image img {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  /* How it works section */
+  .how-it-works {
+    height: auto;
+    padding: 2rem 0;
+  }
+
+  .section-content {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .text-content, 
+  .image-content {
+    width: 100%;
+    text-align: center;
+  }
+
+  .image-content img {
+    width: 80%;
+    margin: 2rem auto;
+    margin-left: 0;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    top: 10%;
+  }
+
+  .progress-bar {
+    left: 20px;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-section {
+    min-height: auto;
+    padding: 120px 0 80px;
+  }
+
+  .hero-image {
+    max-width: 80%;
+    right: -100px;
+    display: none;
+  }
+
+  .feature-container {
+    gap: 40px;
+    padding: 3rem 2rem;
+  }
+
+  .section-content {
+    padding: 0 2rem;
+  }
+
+  .image-content img {
+    width: 60%;
+    margin-left: 5rem;
+  }
+}
+
+/* Larger screens */
+@media (min-width: 1025px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .hero-section {
+    min-height: 100vh;
+  }
+
+  .feature-container {
+    gap: 80px;
+  }
+
+  .section-content {
+    padding: 0 50px;
+  }
+}
+
+/* Action section responsive */
+@media (max-width: 768px) {
+ 
+
+  .floating-image {
+    width: 90%;
+    margin-top: 3rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .store-button img {
+    max-width: 200px;
+  }
+}
+
+/* Navigation responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .navbar-brand {
+    font-size: 20px;
+  }
+
+  .navbar-nav {
+    margin-top: 1rem;
+  }
+
+  .nav-link.btn {
+    margin: 0.5rem 0 !important;
+    display: block;
+    text-align: center;
+  }
 }
