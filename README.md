@@ -32,11 +32,11 @@ TutormatchWeb serves as the gateway to the TutorMatchApp ecosystem. It provides:
 ### Setup Steps
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/tutormatchweb.git
+   git clone https://github.com/CJbaited/TutormatchWeb.git
 
 2. **Navigate to the Project Directory**
    ```bash
-   cd tutormatchweb
+   cd TutormatchWeb
    
 3. **Configure Supabase Settings**
    - Update the Supabase configuration in the project with your Supabase URL and API key.
